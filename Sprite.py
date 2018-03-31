@@ -19,6 +19,7 @@ class Sprite(object):
         # create and save data chunks to s3 (mynameisvinn), where it's processed and saved to vinn-dump
         chunks = np.split(data, n_chunks)
         for i, c in enumerate(chunks):
+            print(">>> putting", i)
             _ = self._put(i, c)
             
         # step 3: fetch results from vinn-dump
