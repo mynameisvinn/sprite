@@ -18,3 +18,4 @@ var/
 
 # Serverless directories
 .serverless
+.ipynb_checkpoints/
