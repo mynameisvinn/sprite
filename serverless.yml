@@ -1,0 +1,16 @@
+service: numpy-stats
+
+provider:
+  name: aws
+  runtime: python3.6
+
+functions:
+  mean:
+    handler: handler.sprite
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
