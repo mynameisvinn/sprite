@@ -1,8 +1,9 @@
 import urllib.parse
 import boto3
 import pickle
+import base64
 
-def sprite(event, context):
+def sprite_s3(event, context):
     client = boto3.client('s3')
 
     # download and unpickle data chunk from s3
@@ -28,3 +29,10 @@ def sprite(event, context):
     print(res)
 
     return True
+
+
+def sprite_event(event: Dict, context: Any):
+    function_bytes = event['function'].encode('utf8')
+    function_pkl = base64.decodebytes(function_bytes)
+    function = pickle.loads(function_pkl)
+    return function()
